@@ -3,59 +3,134 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Alex — Books & Reflections</title>
-  <meta name="description" content="Books and reflections written with patience, presence, and faith." />
+  <title>Alex — Books</title>
+  <meta name="description" content="Books written with patience, presence, and faith." />
 
   <style>
-    body {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      background: #f9f9f7;
-      color: #222;
-      line-height: 1.6;
+    :root{
+      --bg: #fbfaf7;
+      --text: #1f2937;
+      --muted: #4b5563;
+      --card: #ffffff;
+      --border: rgba(31, 41, 55, 0.10);
+      --accent: #1d4ed8;
+      --accent-soft: rgba(29, 78, 216, 0.10);
+      --shadow: 0 10px 30px rgba(0,0,0,0.06);
     }
 
-    .container {
-      max-width: 720px;
+    *{ box-sizing: border-box; }
+
+    body{
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.65;
+    }
+
+    .container{
+      max-width: 780px;
       margin: 0 auto;
       padding: 80px 24px;
     }
 
-    h1 {
-      font-size: 2.4rem;
-      margin-bottom: 1.2rem;
-      font-weight: normal;
+    header{
+      border-bottom: 1px solid var(--border);
+      background: rgba(251,250,247,0.9);
     }
 
-    p {
-      font-size: 1.05rem;
-      margin-bottom: 1.2rem;
+    nav{
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: system-ui, -apple-system, sans-serif;
     }
 
-    .quiet {
-      margin-top: 3rem;
-      font-style: italic;
-      color: #555;
+    nav a{
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav .links a{
+      margin-left: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+    }
+
+    nav .links a.active{
+      background: var(--accent-soft);
+    }
+
+    h1{
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      margin-bottom: 1rem;
+    }
+
+    .lead{
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 65ch;
+    }
+
+    .card{
+      margin-top: 2.5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 1.6rem;
+    }
+
+    footer{
+      margin-top: 4rem;
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 0;
+      color: var(--muted);
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 0.95rem;
     }
   </style>
 </head>
 
 <body>
+  <header>
+    <nav>
+      <a href="#">Alex</a>
+      <div class="links">
+        <a class="active" href="#">Home</a>
+        <a href="#">Books</a>
+      </div>
+    </nav>
+  </header>
+
   <main class="container">
-    <h1>Welcome</h1>
+    <h1>Books written with patience, presence, and faith.</h1>
 
-    <p>
-      This is a quiet place for books written with patience, presence, and faith.
+    <p class="lead">
+      This site is a quiet shelf — a place to share what has been written,
+      and what may be written next. Nothing here is rushed.
     </p>
 
-    <p>
-      These works are not rushed. They are shaped slowly, with care,
-      and offered when the time is right.
-    </p>
-
-    <p class="quiet">
-      More will be added — not when it is demanded, but when it is ready.
-    </p>
+    <div class="card">
+      <p class="lead">
+        More will be added, not when it is demanded,
+        but when it is ready.
+      </p>
+    </div>
   </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Alex
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
