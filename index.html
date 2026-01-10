@@ -8,129 +8,247 @@
 
   <style>
     :root{
-      --bg: #fbfaf7;
-      --text: #1f2937;
-      --muted: #4b5563;
-      --card: #ffffff;
-      --border: rgba(31, 41, 55, 0.10);
-      --accent: #1d4ed8;
-      --accent-soft: rgba(29, 78, 216, 0.10);
-      --shadow: 0 10px 30px rgba(0,0,0,0.06);
+      --bg-0: #f7f5ff;
+      --bg-1: #f2fbff;
+      --ink: #101828;
+      --muted: #475467;
+
+      --card: rgba(255,255,255,.70);
+      --border: rgba(16, 24, 40, .10);
+
+      --accent-0: #6d28d9; /* violet */
+      --accent-1: #2563eb; /* blue */
+      --accent-2: #06b6d4; /* cyan */
+
+      --shadow-lg: 0 24px 80px rgba(16,24,40,.16);
+      --shadow-md: 0 12px 28px rgba(16,24,40,.12);
+      --shadow-sm: 0 8px 18px rgba(16,24,40,.10);
+      --radius: 18px;
     }
 
-    *{ box-sizing: border-box; }
-
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Georgia, "Times New Roman", serif;
-      line-height: 1.65;
+      margin:0;
+      color:var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+      line-height:1.65;
+
+      /* soft “color fading” background */
+      background:
+        radial-gradient(900px 450px at 18% 10%, rgba(109,40,217,.18), transparent 55%),
+        radial-gradient(900px 450px at 82% 18%, rgba(37,99,235,.16), transparent 55%),
+        radial-gradient(900px 450px at 65% 82%, rgba(6,182,212,.14), transparent 55%),
+        linear-gradient(120deg, var(--bg-0), var(--bg-1));
+      min-height:100vh;
     }
 
     .container{
-      max-width: 780px;
+      max-width: 860px;
       margin: 0 auto;
-      padding: 80px 24px;
+      padding: 32px 20px 70px;
     }
 
-    header{
-      border-bottom: 1px solid var(--border);
-      background: rgba(251,250,247,0.9);
+    /* Top bar */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 14px 0;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(247,245,255,.70), rgba(247,245,255,.35));
+      border-bottom: 1px solid rgba(16,24,40,.06);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      max-width: 860px;
+      margin:0 auto;
+      padding: 0 20px;
+    }
+
+    .brand{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      font-weight: 700;
+      letter-spacing:.2px;
+      color: var(--ink);
+      text-decoration: none;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .dot{
+      width:10px;height:10px;border-radius:999px;
+      background: linear-gradient(135deg, var(--accent-0), var(--accent-1), var(--accent-2));
+      box-shadow: 0 6px 14px rgba(109,40,217,.25);
     }
 
     nav{
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 18px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: system-ui, -apple-system, sans-serif;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
     }
 
     nav a{
-      color: var(--text);
-      text-decoration: none;
+      text-decoration:none;
+      color: var(--ink);
       font-weight: 600;
-    }
-
-    nav .links a{
-      margin-left: 14px;
-      padding: 6px 12px;
+      font-size: 14px;
+      padding: 8px 12px;
       border-radius: 999px;
+      border: 1px solid rgba(16,24,40,.08);
+      background: rgba(255,255,255,.55);
+      box-shadow: var(--shadow-sm);
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
     }
 
-    nav .links a.active{
-      background: var(--accent-soft);
+    nav a:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.75);
+      box-shadow: var(--shadow-md);
     }
+
+    /* Hero */
+    .hero{
+      margin-top: 28px;
+      padding: 34px 26px;
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-60px;
+      background:
+        radial-gradient(240px 160px at 20% 25%, rgba(109,40,217,.16), transparent 70%),
+        radial-gradient(260px 170px at 80% 30%, rgba(37,99,235,.14), transparent 70%),
+        radial-gradient(240px 160px at 55% 85%, rgba(6,182,212,.12), transparent 70%);
+      filter: blur(2px);
+      pointer-events:none;
+    }
+
+    .hero > *{ position:relative; }
 
     h1{
-      font-size: clamp(2rem, 4vw, 2.6rem);
-      margin-bottom: 1rem;
+      margin: 0 0 8px;
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -0.6px;
     }
 
     .lead{
+      margin:0;
       color: var(--muted);
-      font-size: 1.08rem;
-      max-width: 65ch;
+      font-size: 16px;
+      max-width: 62ch;
     }
 
-    .card{
-      margin-top: 2.5rem;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-      padding: 1.6rem;
+    .divider{
+      height: 1px;
+      margin: 22px 0;
+      background: linear-gradient(90deg, transparent, rgba(16,24,40,.18), transparent);
+    }
+
+    .quote{
+      margin:0;
+      color: var(--muted);
+      font-style: italic;
+      font-size: 15px;
+    }
+
+    /* Sections */
+    section{
+      margin-top: 22px;
+      padding: 22px 22px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(16,24,40,.08);
+      box-shadow: var(--shadow-md);
+    }
+
+    section h2{
+      margin: 0 0 10px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      font-size: 18px;
+      letter-spacing: .2px;
+    }
+
+    .pill{
+      display:inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      font-size: 12px;
+      font-weight: 700;
+      color: #0b1220;
+      background: linear-gradient(135deg, rgba(109,40,217,.12), rgba(37,99,235,.10), rgba(6,182,212,.10));
+      border: 1px solid rgba(16,24,40,.10);
+      margin-bottom: 10px;
     }
 
     footer{
-      margin-top: 4rem;
-      border-top: 1px solid var(--border);
-      padding: 1.5rem 0;
-      color: var(--muted);
-      font-family: system-ui, -apple-system, sans-serif;
-      font-size: 0.95rem;
+      margin-top: 26px;
+      color: rgba(16,24,40,.60);
+      font-size: 13px;
+      text-align: center;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
     }
+
+    .spacer{ height: 10px; }
   </style>
 </head>
 
 <body>
-  <header>
-    <nav>
-      <a href="#">Alex</a>
-      <div class="links">
-        <a class="active" href="#">Home</a>
-        <a href="#">Books</a>
-      </div>
-    </nav>
-  </header>
+  <!-- Sticky top navigation -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#home">
+        <span class="dot"></span>
+        <span>Alex</span>
+      </a>
 
-  <main class="container">
-    <h1>Books written with patience, presence, and faith.</h1>
+      <!-- These are now interactive -->
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#books">Books</a>
+      </nav>
+    </div>
+  </div>
 
-    <p class="lead">
-      This site is a quiet shelf — a place to share what has been written,
-      and what may be written next. Nothing here is rushed.
-    </p>
-
-    <div class="card">
+  <div class="container">
+    <!-- HOME -->
+    <div id="home" class="hero">
+      <h1>Books written with patience,<br/>presence, and faith.</h1>
       <p class="lead">
-        More will be added, not when it is demanded,
-        but when it is ready.
+        This site is a quiet shelf — a place to share what has been written,
+        and what may be written next. Nothing here is rushed.
       </p>
-    </div>
-  </main>
 
-  <footer>
-    <div class="container">
-      © <span id="year"></span> Alex
+      <div class="divider"></div>
+      <p class="quote">More will be added, not when it is demanded, but when it is ready.</p>
     </div>
-  </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+    <!-- BOOKS -->
+    <section id="books">
+      <div class="pill">Books</div>
+      <h2>Coming soon</h2>
+      <p class="lead">
+        When you’re ready, we’ll add your first book here as a clean card with a cover image,
+        description, and a download / purchase link.
+      </p>
+    </section>
+
+    <footer>© 2026 Alex Redondo</footer>
+  </div>
 </body>
 </html>
