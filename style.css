@@ -23,7 +23,7 @@ a{ color:#3b63ff; text-decoration:none; }
 a:hover{ text-decoration:underline; }
 
 main{
-  max-width: 720px;
+  width: min(1100px, 92vw);
   margin: 64px auto;
   padding: 0 18px;
 }
@@ -34,7 +34,10 @@ h1{
   margin: 0 0 10px;
 }
 
-p{ margin: 0 0 14px; }
+p{ 
+  margin: 0 0 14px;
+  max-width: 70ch;
+}
 
 .card{
   background: var(--card);
