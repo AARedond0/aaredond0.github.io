@@ -271,15 +271,8 @@
   font-size: 18px;
   line-height: 1.35;
   opacity: 0.9;
-}
-
-
-.sidebar-quote{
-  margin: 0;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 18px;
-  line-height: 1.35;
-}    
+  transition: opacity 1.2s ease;
+}  
   </style>
 </head>
 
@@ -372,5 +365,28 @@ for readers who prefer a physical copy.
 
     <footer>© 2026 Alex Redondo</footer>
   </div>
+  <script>
+  const quotes = [
+    "Freedom is not the absence of restraint, but the presence of right desire.",
+    "Not everything that changes us announces itself loudly.",
+    "Faith grows quietly when we stay present.",
+    "What is formed slowly tends to remain."
+  ];
+
+  const el = document.querySelector(".sidebar-quote");
+  let i = 0;
+
+  function rotateQuote() {
+    el.style.opacity = 0;
+
+    setTimeout(() => {
+      i = (i + 1) % quotes.length;
+      el.textContent = quotes[i];
+      el.style.opacity = 0.9;
+    }, 1200);
+  }
+
+  setInterval(rotateQuote, 7000);
+</script>
 </body>
 </html>
