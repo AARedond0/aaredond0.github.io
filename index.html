@@ -242,18 +242,37 @@
   width:120px;
   opacity:0.85;
 }
+/* Default: hide (prevents covering content on phones + smaller screens) */
 .quote-sidebar{
-  position: fixed;
-  top: 220px;
-  right: max(24px, calc((100vw - 980px)/2));
-  width: 260px;
-  z-index: 999;
-  padding: 14px 14px;
-  border: 1px solid rgba(16,24,40,.12);
-  border-radius: 14px;
-  background: rgba(255, 255, 200, 0.9);
-  backdrop-filter: blur(10px);
+  display: none;
 }
+
+/* Show ONLY when there is real whitespace to the right of a 980px content column */
+@media (min-width: 1550px){
+  .quote-sidebar{
+    display: block;
+    position: fixed;
+    top: 220px;
+    right: 24px;
+    width: 220px;
+    z-index: 50;
+
+    /* no box */
+    padding: 0;
+    border: none;
+    background: transparent;
+    backdrop-filter: none;
+  }
+}
+
+.sidebar-quote{
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  line-height: 1.35;
+  opacity: 0.9;
+}
+
 
 .sidebar-quote{
   margin: 0;
