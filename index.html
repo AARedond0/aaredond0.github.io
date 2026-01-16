@@ -407,7 +407,7 @@ const quotes = [
   "Many walk away not because the teaching is unclear, but because it is demanding.",
   "What saves us is not effort alone, but grace received and followed."
 ];
-
+(() => {
 const el = document.querySelector(".sidebar-quote");
 if (!el) return;  
 let i = 1;
@@ -433,6 +433,7 @@ el.innerHTML = formatQuote(quotes[0]);
 
 /* rotate every 10 seconds */
 setInterval(rotateQuote, 10000);
+})();
 </script>
 
 </body>
