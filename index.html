@@ -257,6 +257,7 @@
     right: max(24px, calc((100vw - 980px)/2 - 12px));
     width: 220px;
     z-index: 50;
+    pointer-events: none;
 
     /* no box */
     padding: 0;
@@ -276,6 +277,37 @@
   transition: opacity 2.2s ease; /* slower fade */
   color: var(--ink);
 }
+    /* --- Sidebar quote position tuning (higher + non-overlapping) --- */
+
+/* Lift the quote higher and keep it visible while scrolling */
+@media (min-width: 1024px) {
+  .quote-sidebar {
+    top: 110px;           /* move higher (was 220px) */
+  }
+}
+
+/* Reserve space so content never slides under the quote */
+.main-content,
+.container,
+.content {
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .main-content {
+    padding-right: 300px; /* space for the quote on the right */
+  }
+}
+
+/* Disable sidebar behavior on smaller screens */
+@media (max-width: 1023px) {
+  .quote-sidebar {
+    position: static;
+    width: auto;
+    padding: 0;
+  }
+}
+
 
 /* Anchor word (first word) */
 .sidebar-quote .anchor {
