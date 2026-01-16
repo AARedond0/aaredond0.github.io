@@ -306,8 +306,27 @@
     width: auto;
     padding: 0;
   }
-}
+  /* --- Option A: Margin-note treatment for sidebar quote --- */
+@media (min-width: 1024px) {
+  .quote-sidebar {
+    padding-left: 18px; /* space for the margin rule */
+    position: relative;
+  }
 
+  .quote-sidebar::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    left: 0;
+    width: 1px;
+    background: rgba(0, 0, 0, 0.12);
+  }
+
+  .sidebar-quote {
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.06);
+  }
+}
 
 /* Anchor word (first word) */
 .sidebar-quote .anchor {
