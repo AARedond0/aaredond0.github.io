@@ -274,7 +274,8 @@
   line-height: 1.45;
   font-weight: 700;
   opacity: 0.9;
-  transition: opacity 3.2s ease; /* slower fade */
+  transition: opacity 3.2s ease-in-out, transform 3.2s ease-in-out; /* slower fade */
+  will-change: opacity, transform;
   color: var(--ink);
 }
     /* --- Sidebar quote position tuning (higher + non-overlapping) --- */
@@ -471,10 +472,12 @@ function formatQuote(text) {
 
 function rotateQuote() {
   el.style.opacity = 0;
+  el.style.transform = "translate(6px)";
 
   setTimeout(() => {
     el.innerHTML = formatQuote(quotes[i]);
     el.style.opacity = 0.9;
+    el.style.transform = "translateY(0px)";
     i = (i + 1) % quotes.length;
   }, 3200); // longer fade-out
 }
