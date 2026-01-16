@@ -254,7 +254,7 @@
     display: block;
     position: fixed;
     top: 220px;
-    right: max(40px, calc((100vw - 980px)/2 - 8px));
+    right: 24px;
     width: 220px;
     z-index: 50;
     pointer-events: none;
@@ -457,7 +457,7 @@ function rotateQuote() {
     el.innerHTML = formatQuote(quotes[i]);
     el.style.opacity = 0.9;
     i = (i + 1) % quotes.length;
-  }, 2800); // longer fade-out
+  }, 3200); // longer fade-out
 }
 
 /* initial load */
