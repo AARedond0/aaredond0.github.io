@@ -472,7 +472,7 @@ function formatQuote(text) {
 
 function rotateQuote() {
   el.style.opacity = 0;
-  el.style.transform = "translate(6px)";
+  el.style.transform = "translateY(6px)";
 
   setTimeout(() => {
     el.innerHTML = formatQuote(quotes[i]);
