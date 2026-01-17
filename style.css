@@ -64,7 +64,11 @@ body {
   display:flex;
   align-items:flex-start;
   justify-content:space-between;
-  gap:24px;
+
+  gap:16px;
+
+  /* IMPORTANT: keep clear of the quote sidebar on the right */
+  padding-right: 220px;   /* adjust if your sidebar is wider */
 }
 
 .book-text{
@@ -72,13 +76,16 @@ body {
   min-width:0;
 }
 
+/* bring image left a bit (toward center) */
 .book-image{
   flex:0 0 auto;
+  margin-left:-40px;
 }
 
+/* make cover a bit bigger */
 .book-image img{
-  width:170px;     /* <-- change this number if you want smaller/larger */
-  max-width:170px;
+  width:250px;            /* bigger */
+  max-width:250px;
   height:auto;
   display:block;
   border-radius:6px;
