@@ -119,3 +119,10 @@ body {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+.qr-share {
+  text-align: center;
+}
+
+.qr-share p {
+  margin-bottom: 12px;
+}
