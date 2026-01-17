@@ -59,3 +59,28 @@ body {
   padding-left: 20px;
   padding-right: 20px;
 }
+/* --- Books: cover on the right (desktop) --- */
+.book-access{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:24px;
+}
+
+.book-text{
+  flex:1;
+  min-width:0;
+}
+
+.book-image{
+  flex:0 0 auto;
+}
+
+.book-image img{
+  width:170px;     /* <-- change this number if you want smaller/larger */
+  max-width:170px;
+  height:auto;
+  display:block;
+  border-radius:6px;
+  box-shadow:0 8px 22px rgba(0,0,0,0.18);
+}
