@@ -84,3 +84,20 @@ body {
   border-radius:6px;
   box-shadow:0 8px 22px rgba(0,0,0,0.18);
 }
+/* --- Mobile layout: text full width, cover below --- */
+@media (max-width: 700px){
+  .book-access{
+    display:block;          /* stop side-by-side on phone */
+  }
+
+  .book-image{
+    margin-top:16px;
+    text-align:center;      /* center the cover */
+  }
+
+  .book-image img{
+    width:80%;
+    max-width:320px;
+    height:auto;
+  }
+}
