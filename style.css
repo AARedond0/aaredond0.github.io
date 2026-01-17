@@ -94,10 +94,15 @@ body {
 /* --- Mobile layout: text full width, cover below --- */
 @media (max-width: 700px){
   .book-access{
-    display:block;     /* stop side-by-side on phone */
+    display:flex;
+    flex-direction: column;  /* stop side-by-side on phone */
     padding-right: 0;  /* IMPORTANT: remove the 220px squeeze */
   }
-
+/* FORCE the text to use full width on iPhone */
+  .book-text{
+    width:100%;
+    max-width:none;
+  }  
   .book-image{
     margin-left: 0;    /* undo the -40px on phone */
     margin-top: 14px;
