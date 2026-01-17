@@ -115,3 +115,7 @@ body {
     height: auto;
   }
 }
+.book-text a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
