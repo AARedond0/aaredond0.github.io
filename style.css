@@ -120,9 +120,16 @@ body {
   text-underline-offset: 3px;
 }
 .qr-share {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* THIS is the key */
   text-align: center;
 }
 
 .qr-share p {
-  margin-bottom: 12px;
+  margin: 0 0 12px 0;
+}
+
+.qr-share img {
+  display: block;
 }
